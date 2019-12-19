@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <h2>添加解析记录—《{{ domain }}》</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default">
+                <form action="" id="dns_add" method="post" class="form-horizontal"><br>
+                        {% csrf_token %}
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">记录类型：</label>
+                        <div class="col-sm-9 select">
+                            <select id="dns_type" name="type" class="form-control">
+                                <option value="A" id="a">A-将域名解析一个IPV4地址</option>
+                                <option value="CNAME" id="cname">CNAME-将域名指向另一个域名</option>
+                                <option value="NS" id="nx">NS-将子域名指定其他DNS服务器解析</option>
+                                <option value="MX" id="mx">MX-将域名指向邮件服务器地址</option>
+                                <option value="AAAA" id="aaaa">AAAA-将域名执行一个IPV6地址</option>
+                                <option value="TXT" id="txt">TXT-通常做SPF记录(反垃圾邮件)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">主机记录：</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="inputEmail3" name="host"
+                                   value="">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">解析线路：</label>
+                        <div class="col-sm-9 select">
+                            <select id="dns_type" name="view" class="form-control">
+                                <option value="Telecom" id="a">Telecom</option>
+                                <option value="Unicom" id="cname">Unicom</option>
+                                <option value="CMCC" id="nx">CMCC</option>
+                                <option value="other" id="mx">other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">记录值：</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="inputEmail3" name="data"
+                                   value="">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">TTL：</label>
+                        <div class="col-sm-9">
+                            <input type="number" min="60" class="form-control" id="inputEmail3" name="ttl"
+                                   value="60">
+                        </div>
+                    </div>
+
+                    <div class="form-group hidden" id="in_mx">
+                        <label for="in_mx" class="col-sm-2 control-label">MX优先级：</label>
+                        <div class="col-sm-9">
+                            <input type="number" min="1" class="form-control" name="ipt_mx"
+                                   value="10">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <input type="submit" class="btn btn-default" value="提交更改" id="sub"></input>
+                        </div>
+                    </div>
+                    <br>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/jquery-3.3.1.js"></script>
+    <script type="application/javascript">
+
+        $('#mx').click(function () {
+            $('#in_mx').attr('class', 'show');
+        });
+        $('#nx').click(function () {
+            $('#in_mx').attr('class', 'hidden');
+        });
+        $('#cname').click(function () {
+            $('#in_mx').attr('class', 'hidden');
+        });
+        $('#a').click(function () {
+            $('#in_mx').attr('class', 'hidden');
+        });
+        $('#txt').click(function () {
+            $('#in_mx').attr('class', 'hidden');
+        });
+        $('#aaaa').click(function () {
+            $('#in_mx').attr('class', 'hidden');
+        });
+
+    </script>
+{% endblock %}

@@ -1,0 +1,36 @@
+DELETE http://127.0.0.1:8000/zone-add/11/
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+DELETE http://127.0.0.1:8000/zone-add/1/
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-09-11T101817.500.html
+
+###
+
+DELETE http://127.0.0.1:8000/zone-add/1/
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-09-10T022422.500.html
+
+###
+
+DELETE http://127.0.0.1:8000/zone-add/1/
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-09-10T022328.403.html
+
+###
+
+DELETE http://localhost:8080/zone-add/1/
+Accept: */*
+Cache-Control: no-cache
+
+###
+

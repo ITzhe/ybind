@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <h2>添加域名</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default">
+                <form action="" id="dns_add" method="post" class="form-horizontal"><br>
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-3 control-label">你的域名：</label>
+                        <div class="col-sm-7">
+                            <input type="text" class="form-control" id="inputEmail3" name="domain"
+                                   value="">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-5 col-sm-10">
+                            <input type="submit" class="btn btn-default" value="域名添加" id="sub"></input>
+                        </div>
+                    </div>
+                    <br>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

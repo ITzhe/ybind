@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="row">
+        <h2 id="t"> {{ domain }} </h2>
+    </div>
+
+    <div class="row">
+        <a href="/detail-add/{{ domain }}/"><button type="button" class="btn btn-info">添加记录</button></a>
+    </div>
+
+    <div class="col-md-12 ">
+        <div class="panel panel-default">
+            <table class="table table-condensed">
+                <tr>
+                    <th>记录类型</th>
+                    <th>解析线路</th>
+                    <th>主机记录</th>
+                    <th>记录值</th>
+                    <th>MX优先级</th>
+                    <th>TTL</th>
+                    <th>操作</th>
+                </tr>
+                {% for zone in dns_list %}
+                    {% if zone.type != "SOA" %}
+                        <tr>
+                            <td>{{ zone.dns_type }}</td>
+                            <td>{{ zone.get_view_display }}</td>
+                            <td>{{ zone.host }}</td>
+                            <td>{{ zone.data }}</td>
+                            <td>
+                                {% if zone.mx_priority %}
+                                    {{ zone.mx_priority }}
+                                {% else %}
+                                    --
+                                {% endif %}
+                            </td>
+                            <td>{{ zone.ttl }}</td>
+
+                            <td>
+                                <a href="/z_info_edit/{{ zone.id }}/">修改</a> |
+                                <a href="/z_info_del/{{ zone.id }}/">删除</a>
+                            </td>
+
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+
+
+{% endblock %}

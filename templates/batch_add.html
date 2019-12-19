@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container-fluid">
+    <div class="row">
+        <h2>批量添加解析记录</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 ">
+            <div class="panel panel-default">
+                <br>
+                <form class="form-horizontal" method="post" id="batch-dns">
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">类型</label>
+                        <div class="col-lg-8">
+                            <select class="form-control" name="type">
+                                  <option value="A">A</option>
+                                  <option value="CNAME">CNAME</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">域名</label>
+                        <div class="col-lg-8">
+                            <select class="form-control" name="domain">
+                                {% for foo in zone_list %}
+                                  <option value="{{ foo.title }}">{{ foo.title }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">输入您的IP地址和解析记录</label>
+                        <div class="col-lg-8 ">
+                            <textarea class="form-control" rows="9" name="batch" form="batch-dns"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <input type="submit" class="btn btn-default" value="提交"></input>
+                        </div>
+                    </div>
+
+                </form>
+                <br>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}
