@@ -83,7 +83,7 @@ DATABASES = {
         'NAME': 'xbind',
         'USER': 'xbind',
         'PASSWORD': 'xbind_123',
-        'HOST': '120.27.103.73',
+        'HOST': '192.168.56.11',
         'PORT': '3306',
 
         'OPTIONS': {
